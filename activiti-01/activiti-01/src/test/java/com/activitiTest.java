@@ -23,11 +23,12 @@ public class activitiTest {
 //        ProcessEngine processEngine = config.buildProcessEngine();
 //        System.out.println(processEngine);
 //    }
-
+    ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+    // 查看用户参与的任务
     @Test
     public void findTaskUserList(){
-        String userName = "zhangsan";
-        ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+        String userName = "wangwu";
+
         TaskService taskService = processEngine.getTaskService();
         TaskQuery holiday = taskService.createTaskQuery().processDefinitionKey("holiday");
         List<Task> tasks = holiday.list();
@@ -37,6 +38,24 @@ public class activitiTest {
             System.out.println("任务名称:"+task.getName());
             System.out.println("任务负责人"+task.getAssignee());
         }
+    }
+
+    // 完成任务
+    @Test
+    public void completTask() {
+    //任务id
+        String taskId = "7502";
+    // 创建TaskService
+        TaskService taskService = processEngine.getTaskService();
+    //完成任务
+        taskService.complete(taskId);
+
+        System.out.println("完成任务id="+taskId);
+    }
+
+    //查询任务并处理
+    public void completTaskAndList(){
+
     }
 
     /**

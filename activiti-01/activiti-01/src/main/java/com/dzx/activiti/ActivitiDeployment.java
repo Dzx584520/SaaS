@@ -6,6 +6,7 @@ import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Deployment;
 
 public class ActivitiDeployment {
+    // 创建流程示例-部署流程图
     public static void main(String[] args) {
         //1.创建ProcessEngin对象
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
